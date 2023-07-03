@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TtS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Arial", sans-serif;
+            box-sizing: border-box;
+        }
+
+        .hero {
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #f53b57, #ffc048);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .hero h1 {
+            color: #fff;
+            font-size: 32px;
+            margin-bottom: 24px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero textarea {
+            padding: 15px;
+            width: 400px;
+            height: 200px;
+            outline: 0;
+            border: 0;
+            border-radius: 15px;
+            background: linear-gradient(#fff, #f9a4ae);
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            color: #333;
+        }
+
+        .hero button {
+            background: linear-gradient(#f53b57, #ffc048);
+            font-size: 24px;
+            margin-top: 24px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .hero button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <h1>Text to Speech</h1>
+        <textarea placeholder="Write or Copy your text here"></textarea>
+        <button>Play the <span>Voice</span></button>
+    </div>
+    <script>
+        let speech = new SpeechSynthesisUtterance();
+
+        document.querySelector("button").addEventListener("click", () => {
+            speech.text = document.querySelector("textarea").value;
+            window.speechSynthesis.speak(speech);
+        });
+    </script>
+</body>
+</html>
